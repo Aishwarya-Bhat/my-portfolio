@@ -1,0 +1,225 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+}
+
+:root {
+  /* --color-bg: #012821; green */
+
+  /* pink theme */
+  --color-bg: #2b202d;
+  /* --color-bg: white; */
+  /* --color-bg: #1f1f38; */
+
+  /* --color-bg-variant: #02493d; green */
+  /* --color-bg-variant: #023f35; green */
+  /* --color-bg-variant: #1a472a; green */
+
+  /* pink theme */
+  --color-bg-variant: #5f4661;
+  /* --color-bg-variant: #2c2c6c; */
+
+  /* --color-primary: #44c6ab; green */
+  /* --color-primary: #2cf19b; green */
+  /* --color-primary: #09f5cc; green */
+
+  /* pink theme */
+  --color-primary: #f9bbff;
+  /* --color-primary: #4db5ff; */
+
+  /* --color-primary-variant: rgba(4, 136, 113); green */
+  /* --color-primary-variant: rgba(79, 59, 81); */
+  /* pink theme */
+  --color-primary-variant: rgba(224, 168, 229);
+  /* --color-primary-variant: rgba(77, 181, 255, 0.4); */
+
+  /* pink theme */
+  --color-white: #fff;
+  --color-light: rgba(255, 255, 255, 0.6);
+
+  /* ==============light theme colors=================== */
+  --color-light-bg: white;
+  --color-light-primary: #ed82f7;
+  --color-light-primary-variant: rgb(220, 141, 227);
+  --color-light-bg-variant: #f9dffa;
+
+  --color-light-white: #352837;
+  --color-light-light: rgba(113, 104, 115);
+
+  /* --color-bg-variant: #fdf0fe; */
+  /* --color-primary: #bc6aca;
+
+  /* ===========container=============== */
+  --container-width-lg: 75%;
+  --container-width-md: 86%;
+  --container-width-sm: 90%;
+  --transition: all 400ms ease;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: var(--color-bg);
+  color: var(--color-white);
+  line-height: 1.7;
+  /* background-image: url(../src/assets/8410.jpg); */
+}
+/* 
+======General============ */
+.container {
+  width: var(--container-width-lg);
+  margin: 0 auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: 500;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+section {
+  margin-top: 8rem;
+  /* height: 100vh; */
+}
+
+section > h2,
+section > h5 {
+  text-align: center;
+  color: var(--color-light);
+}
+
+.light__h5 {
+  color: var(--color-light-light);
+}
+
+section > h2 {
+  color: var(--color-primary);
+  margin-bottom: 3rem;
+}
+
+.light__h2 {
+  color: var(--color-light-primary);
+}
+
+.text-light {
+  color: var(--color-light);
+}
+
+a {
+  color: var(--color-primary);
+  transition: var(--transition);
+}
+
+a:hover {
+  color: var(--color-white);
+}
+
+/* .btn {
+  width: max-content;
+  display: inline-block;
+  color: var(--color-primary);
+  padding: 0.75rem 1.2rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  border: 1px solid var(--color-primary);
+  transition: var(--transition);
+}
+
+.btn:hover {
+  background: var(--color-white);
+  color: var(--color-bg);
+  border-color: transparent;
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  color: var(--color-bg);
+} */
+
+.buttn {
+  width: max-content;
+  display: inline-block;
+  padding: 0.75rem 1.2rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.btn {
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+}
+
+.btn:hover {
+  background: var(--color-white);
+  color: var(--color-bg);
+  border-color: transparent;
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  color: var(--color-bg);
+}
+
+.light__btn {
+  color: var(--color-light-primary);
+  border: 1px solid var(--color-light-primary);
+}
+
+.light__btn:hover {
+  background: var(--color-light-white);
+  color: var(--color-light-bg);
+  border-color: transparent;
+}
+
+.light__btn-primary {
+  background: var(--color-light-primary);
+  color: var(--color-light-bg);
+}
+
+img {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+}
+
+/* =======MEDIUM DEVIVES========== */
+@media screen and (max-width: 1024px) {
+  .container {
+    width: var(--container-width-md);
+  }
+
+  section > h2 {
+    margin-top: 1rem;
+  }
+}
+
+/* =======Small DEVIVES========== */
+@media screen and (max-width: 600px) {
+  .container {
+    width: var(--container-width-sm);
+  }
+
+  section > h2 {
+    margin-bottom: 2rem;
+  }
+}

@@ -1,0 +1,140 @@
+.full__container {
+  display: grid;
+  /* grid-template-columns: 1fr; */
+  gap: 2rem;
+}
+
+.experience__container,
+.experience__twosets__container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.experience__container > div,
+.experience__twosets__container > div {
+  background: var(--color-bg-variant);
+  padding: 2.5rem 5rem;
+  border-radius: 2rem;
+  border: 1px solid transparent;
+  transition: var(--transition);
+}
+
+.experience__container > div:hover,
+.experience__twosets__container > div:hover {
+  background: transparent;
+  border-color: var(--color-primary-variant);
+  cursor: default;
+}
+
+.experience__container > div h3 {
+  text-align: center;
+  color: var(--color-primary);
+  margin-bottom: 2rem;
+}
+
+.experience__twosets__container > div h3 {
+  /* text-align: center; */
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+  margin-right: 3rem;
+}
+
+.experience__content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 2rem;
+}
+
+.experience__details {
+  display: flex;
+  gap: 1rem;
+}
+
+.experience__details-icon {
+  margin-top: 5px;
+  color: var(--color-primary);
+}
+
+.light__experience__details-icon {
+  margin-top: 5px;
+  color: var(--color-light-primary);
+}
+
+.experience__twosets__skills {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* gap: 2rem; */
+}
+
+.experience__twosets__content {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 2rem;
+}
+
+.experience__twosets__skills > div h4 {
+  margin-right: 3.5rem;
+}
+/* .twosets__heading {
+  padding: 10px;
+} */
+
+/* =======MEDIUM DEVIVES========== */
+@media screen and (max-width: 1024px) {
+  .experience__container {
+    grid-template-columns: 1fr;
+  }
+
+  .experience__container > div {
+    width: 80%;
+    padding: 2rem;
+    margin: 0 auto;
+  }
+
+  .experience__content {
+    padding: 1rem;
+  }
+
+  .experience__twosets__container {
+    grid-template-columns: 1fr;
+  }
+
+  .experience__twosets__container > div {
+    width: 80%;
+    padding: 2rem;
+    margin: 0 auto;
+  }
+
+  .experience__twosets__content {
+    padding: 1rem;
+  }
+}
+
+/* =======Small DEVIVES========== */
+@media screen and (max-width: 600px) {
+  /* .experience__container {
+    gap: 1rem;
+  } */
+
+  .experience__container > div {
+    width: 100%;
+    padding: 2rem 1rem;
+  }
+
+  .experience__twosets__container > div {
+    width: 100%;
+    padding: 2rem 1rem;
+    /* padding: 2rem 2rem 2rem 1rem; */
+  }
+
+  .experience__twosets__skills {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .experience__twosets__container > div h3 {
+    /* text-align: center; */
+    margin-bottom: 1rem;
+  }
+}
