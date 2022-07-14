@@ -230,7 +230,7 @@ const Footer = () => {
               ? pageStyles.light_hover_footer_socials
               : pageStyles.light_footer_socials
           }
-          href="https://github.com"
+          href="https://github.com/Aishwarya-Bhat?tab=repositories"
           target="_blank"
         >
           <VscGithub />

@@ -157,7 +157,7 @@ const Contact = () => {
           >
             <FaWhatsapp className="contact__option-icon" />
             <h4>Whatsapp</h4>
-            <h5>+91 9876543211</h5>
+            <h5>Aishwarya</h5>
             <a
               onMouseEnter={() => handleMouseEnter(2)}
               onMouseLeave={() => handleMouseLeave(2)}

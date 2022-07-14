@@ -89,7 +89,7 @@ const HeaderSocials = () => {
             ? pageStyles.light_hover_social_icon
             : pageStyles.light_social_icon
         }
-        href="https://github.com"
+        href="https://github.com/Aishwarya-Bhat?tab=repositories"
         target="_blank"
       >
         <GoMarkGithub />
