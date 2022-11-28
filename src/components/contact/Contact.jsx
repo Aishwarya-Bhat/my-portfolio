@@ -113,7 +113,7 @@ const Contact = () => {
                   : pageStyles.light_option
               }
               href="mailto:tgaishwarya.95@gmail.com"
-              target="_blank"
+              target="_blank" rel="noreferrer"
             >
               Send a mail
             </a>
@@ -142,7 +142,7 @@ const Contact = () => {
                   : pageStyles.light_option
               }
               href="https://m.me/aishwarya.bhat.95"
-              target="_blank"
+              target="_blank" rel="noreferrer"
             >
               Send a messege
             </a>
@@ -170,8 +170,8 @@ const Contact = () => {
                   ? pageStyles.light_hover_option
                   : pageStyles.light_option
               }
-              href="https://wa.me/919621469775"
-              target="_blank"
+              href="https://wa.me/919620469775"
+              target="_blank" rel="noreferrer"
             >
               Send a messesge
             </a>

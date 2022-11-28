@@ -134,28 +134,6 @@ a:hover {
   color: var(--color-white);
 }
 
-/* .btn {
-  width: max-content;
-  display: inline-block;
-  color: var(--color-primary);
-  padding: 0.75rem 1.2rem;
-  border-radius: 0.4rem;
-  cursor: pointer;
-  border: 1px solid var(--color-primary);
-  transition: var(--transition);
-}
-
-.btn:hover {
-  background: var(--color-white);
-  color: var(--color-bg);
-  border-color: transparent;
-}
-
-.btn-primary {
-  background: var(--color-primary);
-  color: var(--color-bg);
-} */
-
 .buttn {
   width: max-content;
   display: inline-block;
@@ -169,11 +147,14 @@ a:hover {
   border: 1px solid var(--color-primary);
 }
 
-.btn:hover {
+
+
+.btn:hover, .btn:focus {
   background: var(--color-white);
   color: var(--color-bg);
   border-color: transparent;
 }
+
 
 .btn-primary {
   background: var(--color-primary);
@@ -185,7 +166,7 @@ a:hover {
   border: 1px solid var(--color-light-primary);
 }
 
-.light__btn:hover {
+.light__btn:hover, .light__btn:focus{
   background: var(--color-light-white);
   color: var(--color-light-bg);
   border-color: transparent;
