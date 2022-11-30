@@ -1,12 +1,13 @@
 import React, { useContext, useState } from "react";
 import { themeContext } from "../../Context";
 import ProjectCard from "./ProjectCard";
+import { motion } from "framer-motion"
 import "./projects.css";
 
 
 const Projects = () => {
   const projectDetails = [
-     {
+    {
       projectTypeHeading: "React Web Applications",
       workList: [
         "Orbis App: Experienced in rendering data as XY Chart, Bubblechart, Stack chart, Pie chart, Donut chart for the visualizations of revolution using library like Am charts.",
@@ -17,7 +18,7 @@ const Projects = () => {
         "Created an online Student Feedback System to reduce paper work."
       ]
     },
-     {
+    {
       projectTypeHeading: "React Native Applications",
       workList: [
         "Scripbox App: Implemented react stepper, radio card, news card, blog card, and video card feature components for making the application user friendly.",
@@ -45,12 +46,29 @@ const Projects = () => {
       ]
     },
   ]
-  
+
   const [projectNum, setProjectNum] = useState(0);
+  const [showMotion, setShowMotion] = useState(false)
+
   const theme = useContext(themeContext);
   const darkMode = theme.state.darkMode;
 
+  const variants = {
 
+    scaleChange: { scale: 0.5, transition: { duration: 1, type: "spring", } },
+    stop: { scale: 1 }
+
+  };
+
+  const handleClick = (slide) => {
+    setProjectNum(slide);
+    setShowMotion(true);
+    setTimeout(() => {
+      setShowMotion(false);
+    }, 1000);
+
+
+  }
   return (
     <section id="services">
       <h5
@@ -72,41 +90,44 @@ const Projects = () => {
         Projects
       </h2>
       <div className="container buttons_container">
-      <button
-            // type="submit"
-            className={
-              darkMode
-                ? "buttn btn btn-primary active"
-                : "buttn light__btn light__btn-primary"
-            }
-            onClick={() => setProjectNum(0)}
-          >
-            React Web Applications
-          </button>
-          <button
-            // type="submit"
-            className={
-              darkMode
-                ? "buttn btn btn-primary"
-                : "buttn light__btn light__btn-primary"
-            }
-            onClick={() => setProjectNum(1)}
-          >
-            React Native Applications
-          </button>
-      <button
-            // type="submit"
-            className={
-              darkMode
-                ? "buttn btn btn-primary"
-                : "buttn light__btn light__btn-primary"
-            }
-            onClick={() => setProjectNum(2)}
-          >
-            Embedded Applications
-          </button>
+        <button
+          // type="submit"
+          className={
+            darkMode
+              ? "buttn btn btn-primary active"
+              : "buttn light__btn light__btn-primary"
+          }
+          onClick={() => handleClick(0)}
+        >
+          React Web Applications
+        </button>
+        <button
+          // type="submit"
+          className={
+            darkMode
+              ? "buttn btn btn-primary"
+              : "buttn light__btn light__btn-primary"
+          }
+          onClick={() => handleClick(1)}
+        >
+          React Native Applications
+        </button>
+        <button
+          // type="submit"
+          className={
+            darkMode
+              ? "buttn btn btn-primary"
+              : "buttn light__btn light__btn-primary"
+          }
+          onClick={() => handleClick(2)}
+        >
+          Embedded Applications
+        </button>
       </div>
-      <div className="container projects__container">
+      <motion.div
+        variants={variants}
+        animate={showMotion ? 'scaleChange' : 'stop'}
+        className="container projects__container">
 
         <ProjectCard
           projectTypeNum={projectNum}
@@ -114,7 +135,7 @@ const Projects = () => {
           workList={projectDetails[projectNum].workList}
         />
 
-      </div>
+      </motion.div>
     </section>
   );
 };

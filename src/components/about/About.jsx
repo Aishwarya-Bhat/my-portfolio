@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import "./about.css";
 import ME from "../../assets/women__laptop.png";
 // import ME from "../../assets/cute_girl.webp";
@@ -7,7 +7,16 @@ import AboutCard from "./AboutCard";
 import { FaAward } from "react-icons/fa";
 import { ImUsers } from "react-icons/im";
 import { BsFillFolderFill } from "react-icons/bs";
+import { motion } from "framer-motion"
 import { themeContext } from "../../Context";
+
+const transition = {
+  delay: 0.5,
+  duration: 1,
+  ease: [0.075, 0.82, 0.165, 1],
+  repeat: 1,
+  repeatType: "reverse"
+}
 
 const About = () => {
   const theme = useContext(themeContext);
@@ -35,21 +44,40 @@ const About = () => {
           }
         >
           <div className="about__cards">
-            <AboutCard
-              icon={FaAward}
-              title="Experience"
-              subject="3+ Years Working"
-            />
-            <AboutCard
-              icon={ImUsers}
-              title="Clients"
-              subject="10+ world wide"
-            />
-            <AboutCard
-              icon={BsFillFolderFill}
-              title="Projects"
-              subject="10+ Projects"
-            />
+            <motion.div
+              initial={{ y: 0 }}
+              whileInView={{ x: -70, rotate: 360 }}
+              transition={transition}
+            >
+              <AboutCard
+                icon={FaAward}
+                title="Experience"
+                subject="3+ Years Working"
+              />
+            </motion.div>
+
+            <motion.div
+              initial={{ x: 0 }}
+              whileInView={{ y: -70, rotate: 360 }}
+              transition={transition}
+            >
+              <AboutCard
+                icon={ImUsers}
+                title="Clients"
+                subject="10+ world wide"
+              />
+            </motion.div>
+
+            <motion.div
+              initial={{ y: 0 }}
+              whileInView={{ x: 70, rotate: 360 }}
+              transition={transition}>
+              <AboutCard
+                icon={BsFillFolderFill}
+                title="Projects"
+                subject="10+ Projects"
+              />
+            </motion.div>
           </div>
           <p>
             Software Engineer with a total experience of 5 Years in Web and

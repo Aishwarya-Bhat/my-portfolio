@@ -5,6 +5,7 @@ import { RiMessengerLine } from "react-icons/ri";
 import { FaWhatsapp } from "react-icons/fa";
 import { useRef } from "react";
 import emailjs from "@emailjs/browser";
+import { motion } from "framer-motion"
 import { themeContext } from "../../Context";
 
 const pageStyles = {
@@ -34,6 +35,13 @@ const pageStyles = {
     color: "var(--color-light-white)",
   },
 };
+
+// transition
+const transition = {
+  duration: 2,
+  type: "spring",
+};
+
 const Contact = () => {
   const initialHoverState = [
     { id: 0, hover: false },
@@ -90,7 +98,10 @@ const Contact = () => {
 
       <div className="container contact__container">
         <div className="contact__options">
-          <article
+          <motion.article
+            initial={{ y: -100 }}
+            whileInView={{ y: 0 }}
+            transition={transition}
             className={
               darkMode
                 ? "contact__option dark__contact__option"
@@ -109,17 +120,20 @@ const Contact = () => {
                     ? pageStyles.dark_hover_option
                     : pageStyles.dark_option
                   : isHovering[0].hover
-                  ? pageStyles.light_hover_option
-                  : pageStyles.light_option
+                    ? pageStyles.light_hover_option
+                    : pageStyles.light_option
               }
               href="mailto:tgaishwarya.95@gmail.com"
               target="_blank" rel="noreferrer"
             >
               Send a mail
             </a>
-          </article>
+          </motion.article>
 
-          <article
+          <motion.article
+            initial={{ x: -100 }}
+            whileInView={{ x: 0 }}
+            transition={transition}
             className={
               darkMode
                 ? "contact__option dark__contact__option"
@@ -138,17 +152,20 @@ const Contact = () => {
                     ? pageStyles.dark_hover_option
                     : pageStyles.dark_option
                   : isHovering[1].hover
-                  ? pageStyles.light_hover_option
-                  : pageStyles.light_option
+                    ? pageStyles.light_hover_option
+                    : pageStyles.light_option
               }
               href="https://m.me/aishwarya.bhat.95"
               target="_blank" rel="noreferrer"
             >
               Send a messege
             </a>
-          </article>
+          </motion.article>
 
-          <article
+          <motion.article
+            initial={{ y: 100 }}
+            whileInView={{ y: 0 }}
+            transition={transition}
             className={
               darkMode
                 ? "contact__option dark__contact__option"
@@ -167,15 +184,15 @@ const Contact = () => {
                     ? pageStyles.dark_hover_option
                     : pageStyles.dark_option
                   : isHovering[2].hover
-                  ? pageStyles.light_hover_option
-                  : pageStyles.light_option
+                    ? pageStyles.light_hover_option
+                    : pageStyles.light_option
               }
               href="https://wa.me/919620469775"
               target="_blank" rel="noreferrer"
             >
               Send a messesge
             </a>
-          </article>
+          </motion.article>
         </div>
         <form ref={form} onSubmit={sendEmail}>
           <input

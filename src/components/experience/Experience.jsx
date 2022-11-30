@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import "./experience.css";
 import { BsFillPatchCheckFill } from "react-icons/bs";
 import { themeContext } from "../../Context";
+import { motion } from "framer-motion"
 
 const pageStyles = {
   dark_exep_container: {
@@ -60,15 +61,24 @@ const Experience = () => {
     });
     setIsHovering(newState);
   };
+  // transition
+  const exptransition = {
+    duration: 2,
+    type: "spring",
+  };
+
   return (
     <section id="experience">
       <h5 className={!darkMode && "light__h5"}>What skills I have</h5>
-      <h2 className={!darkMode && "light__h2"}>My Experience</h2>
+      <h2
+        className={!darkMode && "light__h2"}>My Experience</h2>
 
       <div className="full__container">
         <div className="container experience__container">
-          {/* experience__frontend */}
-          <div
+          <motion.div
+            initial={{ opacity: 0, scale: 0.2 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={exptransition}
             onMouseEnter={() => handleMouseEnter(0)}
             onMouseLeave={() => handleMouseLeave(0)}
             style={
@@ -77,8 +87,8 @@ const Experience = () => {
                   ? pageStyles.dark_hover_exp_container
                   : pageStyles.dark_exep_container
                 : isHovering[0].hover
-                ? pageStyles.light_hover_exp_container
-                : pageStyles.light_exep_container
+                  ? pageStyles.light_hover_exp_container
+                  : pageStyles.light_exep_container
             }
             className="experience__languages"
           >
@@ -147,9 +157,12 @@ const Experience = () => {
                 <h4>C#</h4>
               </article>
             </div>
-          </div>
+          </motion.div>
 
-          <div
+          <motion.div
+            initial={{ opacity: 0, scale: 0.2 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={exptransition}
             onMouseEnter={() => handleMouseEnter(1)}
             onMouseLeave={() => handleMouseLeave(1)}
             style={
@@ -158,8 +171,8 @@ const Experience = () => {
                   ? pageStyles.dark_hover_exp_container
                   : pageStyles.dark_exep_container
                 : isHovering[1].hover
-                ? pageStyles.light_hover_exp_container
-                : pageStyles.light_exep_container
+                  ? pageStyles.light_hover_exp_container
+                  : pageStyles.light_exep_container
             }
             className="experience__reactTools"
           >
@@ -218,11 +231,14 @@ const Experience = () => {
                 <h4>React Hooks</h4>
               </article>
             </div>
-          </div>
+          </motion.div>
         </div>
 
         <div className="container experience__twosets__container">
-          <div
+          <motion.div
+            initial={{ opacity: 0, scale: 0.2 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={exptransition}
             onMouseEnter={() => handleMouseEnter(2)}
             onMouseLeave={() => handleMouseLeave(2)}
             style={
@@ -231,8 +247,8 @@ const Experience = () => {
                   ? pageStyles.dark_hover_exp_container
                   : pageStyles.dark_exep_container
                 : isHovering[2].hover
-                ? pageStyles.light_hover_exp_container
-                : pageStyles.light_exep_container
+                  ? pageStyles.light_hover_exp_container
+                  : pageStyles.light_exep_container
             }
             className="experience__twosets__skills"
           >
@@ -290,9 +306,12 @@ const Experience = () => {
                 <h4>Yarn</h4>
               </article>
             </div>
-          </div>
+          </motion.div>
 
-          <div
+          <motion.div
+            initial={{ opacity: 0, scale: 0.2 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={exptransition}
             onMouseEnter={() => handleMouseEnter(3)}
             onMouseLeave={() => handleMouseLeave(3)}
             style={
@@ -301,8 +320,8 @@ const Experience = () => {
                   ? pageStyles.dark_hover_exp_container
                   : pageStyles.dark_exep_container
                 : isHovering[3].hover
-                ? pageStyles.light_hover_exp_container
-                : pageStyles.light_exep_container
+                  ? pageStyles.light_hover_exp_container
+                  : pageStyles.light_exep_container
             }
             className="experience__twosets__skills"
           >
@@ -350,7 +369,7 @@ const Experience = () => {
                 <h4>Bootstrap</h4>
               </article>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

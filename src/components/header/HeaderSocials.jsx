@@ -25,6 +25,7 @@ const pageStyles = {
     color: "var(--color-white)",
   },
 };
+// transition
 const HeaderSocials = () => {
   const initialHoverState = [
     { id: 0, hover: false },
@@ -59,7 +60,9 @@ const HeaderSocials = () => {
   const [isHovering, setIsHovering] = useState(initialHoverState);
 
   return (
-    <div className={darkMode ? "header__socials" : "header__light__socials"}>
+    <div
+
+      className={darkMode ? "header__socials" : "header__light__socials"}>
       <a
         style={
           darkMode
@@ -67,13 +70,13 @@ const HeaderSocials = () => {
               ? pageStyles.dark_hover_social_icon
               : pageStyles.dark_social_icon
             : isHovering[0].hover
-            ? pageStyles.light_hover_social_icon
-            : pageStyles.light_social_icon
+              ? pageStyles.light_hover_social_icon
+              : pageStyles.light_social_icon
         }
         onMouseEnter={() => handleMouseEnter(0)}
         onMouseLeave={() => handleMouseLeave(0)}
         href="https://linkedin.com/in/aishwarya-bhat-143b6a108"
-        target="_blank"
+        target="_blank" rel="noreferrer"
       >
         <GrLinkedin />
       </a>
@@ -86,11 +89,11 @@ const HeaderSocials = () => {
               ? pageStyles.dark_hover_social_icon
               : pageStyles.dark_social_icon
             : isHovering[1].hover
-            ? pageStyles.light_hover_social_icon
-            : pageStyles.light_social_icon
+              ? pageStyles.light_hover_social_icon
+              : pageStyles.light_social_icon
         }
         href="https://github.com/Aishwarya-Bhat?tab=repositories"
-        target="_blank"
+        target="_blank" rel="noreferrer"
       >
         <GoMarkGithub />
       </a>

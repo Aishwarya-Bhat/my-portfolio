@@ -5,6 +5,7 @@ import Myphoto from "../../assets/women_cropped.png";
 // import Myphoto from "../../assets/mepic.png";
 import HeaderSocials from "./HeaderSocials";
 import Toggle from "../Toggle/Toggle";
+import { motion } from "framer-motion"
 import { themeContext } from "../../Context";
 
 const pageStyles = {
@@ -26,6 +27,14 @@ const pageStyles = {
   },
 };
 
+// transition
+const transition = {
+  duration: 3,
+  damping: 3,
+  type: "spring",
+};
+
+
 const Header = () => {
   const [isHovering, setIsHovering] = useState(false);
 
@@ -37,13 +46,18 @@ const Header = () => {
         <Toggle />
       </div>
       <div className="container header__container">
-        <h5>Hello I'm</h5>
-        <h1>Aishwarya Bhat</h1>
-        {/* <h5 className="text-light">Frontend Developer</h5> */}
-        <h5 className={darkMode ? "dark__text-light" : "light__text-light"}>
-          Frontend Developer
-        </h5>
-        <CTA />
+        <motion.div
+          initial={{ y: -100 }}
+          whileInView={{ y: 0 }}
+          transition={transition}
+        >
+          <h5>Hello I'm</h5>
+          <h1>Aishwarya Bhat</h1>
+          <h5 className={darkMode ? "dark__text-light" : "light__text-light"}>
+            Frontend Developer
+          </h5>
+          <CTA />
+        </motion.div>
         <HeaderSocials />
 
         <div className={darkMode ? "myphoto" : "light_myphoto"}>
@@ -59,8 +73,8 @@ const Header = () => {
                 ? pageStyles.dark_hover_scroll
                 : pageStyles.dark_scroll
               : isHovering
-              ? pageStyles.light_hover_scroll
-              : pageStyles.light_scroll
+                ? pageStyles.light_hover_scroll
+                : pageStyles.light_scroll
           }
           href="#contact"
           className="scroll__down"
