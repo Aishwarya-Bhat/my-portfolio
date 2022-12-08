@@ -11,7 +11,7 @@
 } */
 
 header {
-  height: 100vh;
+  height: 120vh;
   overflow: hidden;
   text-align: center;
   padding: 1rem;
@@ -119,15 +119,15 @@ header {
 
 /* =======MEDIUM DEVIVES========== */
 @media screen and (max-width: 1024px) {
-  /* header {
+  header {
     height: 90vh;
-  } */
+  }
 }
 
 /* =======Small DEVIVES========== */
 @media screen and (max-width: 600px) {
   header {
-    height: 100vh;
+    height: 120vh;
   }
 
   .header__socials,
