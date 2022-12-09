@@ -9,7 +9,8 @@
   display: flex;
   justify-content: center;
   gap: 3rem;
-  padding-bottom: 30px;
+  padding: 30px;
+  /* overflow: hidden; */
 }
 
 .projects {
@@ -75,5 +76,9 @@
   .projects__container {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+  }
+
+  .buttons_container {
+    gap: 0.65rem;
   }
 }
