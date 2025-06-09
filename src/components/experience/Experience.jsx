@@ -26,6 +26,94 @@ const pageStyles = {
     color: "var(--color-light-primary)",
   },
 };
+
+// Reusable component for each skill detail
+const ExperienceDetail = ({ label, darkMode }) => (
+  <article className="experience__details">
+    <BsFillPatchCheckFill
+      className={
+        darkMode
+          ? "experience__details-icon"
+          : "light__experience__details-icon"
+      }
+    />
+    <h4>{label}</h4>
+  </article>
+);
+
+// Reusable section container
+const ExperienceSection = ({
+  title,
+  skills,
+  darkMode,
+  hoverState,
+  onMouseEnter,
+  onMouseLeave,
+  containerClass,
+  style,
+}) => (
+  <motion.div
+    initial={{ opacity: 0, scale: 0.2 }}
+    whileInView={{ opacity: 1, scale: 1 }}
+    transition={{ duration: 2, type: "spring" }}
+    onMouseEnter={onMouseEnter}
+    onMouseLeave={onMouseLeave}
+    style={style}
+    className={containerClass}
+  >
+    <h3 style={darkMode ? pageStyles.dark_h3 : pageStyles.light_h3}>{title}</h3>
+    <div className="experience__content">
+      {skills.map((skill) => (
+        <ExperienceDetail key={skill} label={skill} darkMode={darkMode} />
+      ))}
+    </div>
+  </motion.div>
+);
+
+// Reusable two-column section container
+const ExperienceTwoSetsSection = ({
+  leftTitle,
+  leftSkills,
+  rightTitle,
+  rightSkills,
+  darkMode,
+  hoverState,
+  onMouseEnter,
+  onMouseLeave,
+  containerClass,
+  style,
+}) => (
+  <motion.div
+    initial={{ opacity: 0, scale: 0.2 }}
+    whileInView={{ opacity: 1, scale: 1 }}
+    transition={{ duration: 2, type: "spring" }}
+    onMouseEnter={onMouseEnter}
+    onMouseLeave={onMouseLeave}
+    style={style}
+    className={containerClass}
+  >
+    <div className="experience__twosets__content">
+      <h3
+        style={darkMode ? pageStyles.dark_h3 : pageStyles.light_h3}
+        className="twosets__heading"
+      >
+        {leftTitle}
+      </h3>
+      {leftSkills.map((skill) => (
+        <ExperienceDetail key={skill} label={skill} darkMode={darkMode} />
+      ))}
+    </div>
+    <div className="experience__twosets__content">
+      <h3 style={darkMode ? pageStyles.dark_h3 : pageStyles.light_h3}>
+        {rightTitle}
+      </h3>
+      {rightSkills.map((skill) => (
+        <ExperienceDetail key={skill} label={skill} darkMode={darkMode} />
+      ))}
+    </div>
+  </motion.div>
+);
+
 const Experience = () => {
   const initialHoverState = [
     { id: 0, hover: false },
@@ -40,11 +128,9 @@ const Experience = () => {
 
   const handleMouseLeave = (index) => {
     const newState = initialHoverState.map((e) => {
-      // 👇️ if id equals index, update hover property
       if (e.id === index) {
         return { ...e, hover: false };
       }
-      // 👇️ otherwise return object as is
       return e;
     });
     setIsHovering(newState);
@@ -52,324 +138,117 @@ const Experience = () => {
 
   const handleMouseEnter = (index) => {
     const newState = initialHoverState.map((e) => {
-      // 👇️ if id equals index, update hover property
       if (e.id === index) {
         return { ...e, hover: true };
       }
-      // 👇️ otherwise return object as is
       return e;
     });
     setIsHovering(newState);
   };
-  // transition
-  const exptransition = {
-    duration: 2,
-    type: "spring",
-  };
+
+  // Skill arrays
+  const languages = [
+    "JavaScript",
+    "CSS",
+    "HTML",
+    "C",
+    "C++",
+    "C#",
+    "Java",
+    "Python",
+    "Typescript"
+    
+  ];
+  const reactTools = [
+    "React.js",
+    "Redux",
+    "Flux",
+    "React Native",
+    "React Hooks",
+  ];
+  const platforms = ["Git", "GitLab", "GitHub", "CI/CD Pipeline"];
+  const feTools = ["NPM", "Yarn"];
+  const editors = ["Visual Studio Code"];
+  const libraries = ["Material UI", "Bootstrap"];
+  const databases = [ "MongoDB", "MySQL"];
+  const backend = ["Node.js", "Django"];
+
+  // Section style helpers
+  const getSectionStyle = (idx) =>
+    darkMode
+      ? isHovering[idx].hover
+        ? pageStyles.dark_hover_exp_container
+        : pageStyles.dark_exep_container
+      : isHovering[idx].hover
+        ? pageStyles.light_hover_exp_container
+        : pageStyles.light_exep_container;
 
   return (
     <section id="experience">
-      <h5 className={!darkMode && "light__h5"}>What skills I have</h5>
-      <h2
-        className={!darkMode && "light__h2"}>My Experience</h2>
+      <h5 className={!darkMode && "light__h5"}>My Experience On</h5>
+      <h2 className={!darkMode && "light__h2"}>Technical Skills</h2>
 
       <div className="full__container">
         <div className="container experience__container">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.2 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={exptransition}
+          <ExperienceSection
+            title="Languages Known"
+            skills={languages}
+            darkMode={darkMode}
+            hoverState={isHovering[0].hover}
             onMouseEnter={() => handleMouseEnter(0)}
             onMouseLeave={() => handleMouseLeave(0)}
-            style={
-              darkMode
-                ? isHovering[0].hover
-                  ? pageStyles.dark_hover_exp_container
-                  : pageStyles.dark_exep_container
-                : isHovering[0].hover
-                  ? pageStyles.light_hover_exp_container
-                  : pageStyles.light_exep_container
-            }
-            className="experience__languages"
-          >
-            <h3 style={darkMode ? pageStyles.dark_h3 : pageStyles.light_h3}>
-              Languages Known
-            </h3>
-            <div className="experience__content">
-              <article className="experience__details">
-                <BsFillPatchCheckFill
-                  className={
-                    darkMode
-                      ? "experience__details-icon"
-                      : "light__experience__details-icon"
-                  }
-                />
-                <h4>JavaScript</h4>
-              </article>
-              <article className="experience__details">
-                <BsFillPatchCheckFill
-                  className={
-                    darkMode
-                      ? "experience__details-icon"
-                      : "light__experience__details-icon"
-                  }
-                />
-                <h4>CSS</h4>
-              </article>
-              <article className="experience__details">
-                <BsFillPatchCheckFill
-                  className={
-                    darkMode
-                      ? "experience__details-icon"
-                      : "light__experience__details-icon"
-                  }
-                />
-                <h4>HTML</h4>
-              </article>
-              <article className="experience__details">
-                <BsFillPatchCheckFill
-                  className={
-                    darkMode
-                      ? "experience__details-icon"
-                      : "light__experience__details-icon"
-                  }
-                />
-                <h4>C</h4>
-              </article>
-              <article className="experience__details">
-                <BsFillPatchCheckFill
-                  className={
-                    darkMode
-                      ? "experience__details-icon"
-                      : "light__experience__details-icon"
-                  }
-                />
-                <h4>C++</h4>
-              </article>
-              <article className="experience__details">
-                <BsFillPatchCheckFill
-                  className={
-                    darkMode
-                      ? "experience__details-icon"
-                      : "light__experience__details-icon"
-                  }
-                />
-                <h4>C#</h4>
-              </article>
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, scale: 0.2 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={exptransition}
+            containerClass="experience__languages"
+            style={getSectionStyle(0)}
+          />
+          <ExperienceSection
+            title="React Tools"
+            skills={reactTools}
+            darkMode={darkMode}
+            hoverState={isHovering[1].hover}
             onMouseEnter={() => handleMouseEnter(1)}
             onMouseLeave={() => handleMouseLeave(1)}
-            style={
-              darkMode
-                ? isHovering[1].hover
-                  ? pageStyles.dark_hover_exp_container
-                  : pageStyles.dark_exep_container
-                : isHovering[1].hover
-                  ? pageStyles.light_hover_exp_container
-                  : pageStyles.light_exep_container
-            }
-            className="experience__reactTools"
-          >
-            <h3 style={darkMode ? pageStyles.dark_h3 : pageStyles.light_h3}>
-              React Tools
-            </h3>
-            <div className="experience__content">
-              <article className="experience__details">
-                <BsFillPatchCheckFill
-                  className={
-                    darkMode
-                      ? "experience__details-icon"
-                      : "light__experience__details-icon"
-                  }
-                />
-                <h4>React.js</h4>
-              </article>
-              <article className="experience__details">
-                <BsFillPatchCheckFill
-                  className={
-                    darkMode
-                      ? "experience__details-icon"
-                      : "light__experience__details-icon"
-                  }
-                />
-                <h4>Redux</h4>
-              </article>
-              <article className="experience__details">
-                <BsFillPatchCheckFill
-                  className={
-                    darkMode
-                      ? "experience__details-icon"
-                      : "light__experience__details-icon"
-                  }
-                />
-                <h4>Flux</h4>
-              </article>
-              <article className="experience__details">
-                <BsFillPatchCheckFill
-                  className={
-                    darkMode
-                      ? "experience__details-icon"
-                      : "light__experience__details-icon"
-                  }
-                />
-                <h4>React Native</h4>
-              </article>
-              <article className="experience__details">
-                <BsFillPatchCheckFill
-                  className={
-                    darkMode
-                      ? "experience__details-icon"
-                      : "light__experience__details-icon"
-                  }
-                />
-                <h4>React Hooks</h4>
-              </article>
-            </div>
-          </motion.div>
+            containerClass="experience__reactTools"
+            style={getSectionStyle(1)}
+          />
         </div>
 
         <div className="container experience__twosets__container">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.2 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={exptransition}
+          <ExperienceTwoSetsSection
+            leftTitle="Platforms and Systems"
+            leftSkills={platforms}
+            rightTitle="FE Tools and Package Manager"
+            rightSkills={feTools}
+            darkMode={darkMode}
+            hoverState={isHovering[2].hover}
             onMouseEnter={() => handleMouseEnter(2)}
             onMouseLeave={() => handleMouseLeave(2)}
-            style={
-              darkMode
-                ? isHovering[2].hover
-                  ? pageStyles.dark_hover_exp_container
-                  : pageStyles.dark_exep_container
-                : isHovering[2].hover
-                  ? pageStyles.light_hover_exp_container
-                  : pageStyles.light_exep_container
-            }
-            className="experience__twosets__skills"
-          >
-            <div className="experience__twosets__content">
-              <h3
-                style={darkMode ? pageStyles.dark_h3 : pageStyles.light_h3}
-                className="twosets__heading"
-              >
-                Platforms and Systems
-              </h3>
-              <article className="experience__details">
-                <BsFillPatchCheckFill
-                  className={
-                    darkMode
-                      ? "experience__details-icon"
-                      : "light__experience__details-icon"
-                  }
-                />
-                <h4>GitLab</h4>
-              </article>
-              <article className="experience__details">
-                <BsFillPatchCheckFill
-                  className={
-                    darkMode
-                      ? "experience__details-icon"
-                      : "light__experience__details-icon"
-                  }
-                />
-                <h4>GitHub</h4>
-              </article>
-            </div>
-
-            <div className="experience__twosets__content">
-              <h3 style={darkMode ? pageStyles.dark_h3 : pageStyles.light_h3}>
-                FE Tools and Package Manager
-              </h3>
-              <article className="experience__details">
-                <BsFillPatchCheckFill
-                  className={
-                    darkMode
-                      ? "experience__details-icon"
-                      : "light__experience__details-icon"
-                  }
-                />
-                <h4>NPM</h4>
-              </article>
-              <article className="experience__details">
-                <BsFillPatchCheckFill
-                  className={
-                    darkMode
-                      ? "experience__details-icon"
-                      : "light__experience__details-icon"
-                  }
-                />
-                <h4>Yarn</h4>
-              </article>
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, scale: 0.2 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={exptransition}
+            containerClass="experience__twosets__skills"
+            style={getSectionStyle(2)}
+          />
+          <ExperienceTwoSetsSection
+            leftTitle="Development Software Editor"
+            leftSkills={editors}
+            rightTitle="Front End Libraries"
+            rightSkills={libraries}
+            darkMode={darkMode}
+            hoverState={isHovering[3].hover}
             onMouseEnter={() => handleMouseEnter(3)}
             onMouseLeave={() => handleMouseLeave(3)}
-            style={
-              darkMode
-                ? isHovering[3].hover
-                  ? pageStyles.dark_hover_exp_container
-                  : pageStyles.dark_exep_container
-                : isHovering[3].hover
-                  ? pageStyles.light_hover_exp_container
-                  : pageStyles.light_exep_container
-            }
-            className="experience__twosets__skills"
-          >
-            <div className="experience__twosets__content">
-              <h3
-                style={darkMode ? pageStyles.dark_h3 : pageStyles.light_h3}
-                className="twosets__heading"
-              >
-                Development Software Editor
-              </h3>
-              <article className="experience__details">
-                <BsFillPatchCheckFill
-                  className={
-                    darkMode
-                      ? "experience__details-icon"
-                      : "light__experience__details-icon"
-                  }
-                />
-                <h4>Visual Studio Code</h4>
-              </article>
-            </div>
-
-            <div className="experience__twosets__content">
-              <h3 style={darkMode ? pageStyles.dark_h3 : pageStyles.light_h3}>
-                Front End Libraries
-              </h3>
-              <article className="experience__details">
-                <BsFillPatchCheckFill
-                  className={
-                    darkMode
-                      ? "experience__details-icon"
-                      : "light__experience__details-icon"
-                  }
-                />
-                <h4>Material UI</h4>
-              </article>
-              <article className="experience__details">
-                <BsFillPatchCheckFill
-                  className={
-                    darkMode
-                      ? "experience__details-icon"
-                      : "light__experience__details-icon"
-                  }
-                />
-                <h4>Bootstrap</h4>
-              </article>
-            </div>
-          </motion.div>
+            containerClass="experience__twosets__skills"
+            style={getSectionStyle(3)}
+          />
+          <ExperienceTwoSetsSection
+            leftTitle="Databases"
+            leftSkills={databases}
+            rightTitle="Backend Tools"
+            rightSkills={backend}
+            darkMode={darkMode}
+            hoverState={false}
+            onMouseEnter={() => {}}
+            onMouseLeave={() => {}}
+            containerClass="experience__twosets__skills"
+            style={getSectionStyle(2)}
+          />
         </div>
       </div>
     </section>

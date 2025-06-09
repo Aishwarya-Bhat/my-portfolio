@@ -54,7 +54,7 @@ const Header = () => {
           <h5>Hello I'm</h5>
           <h1>Aishwarya Bhat</h1>
           <h5 className={darkMode ? "dark__text-light" : "light__text-light"}>
-            Frontend Developer
+            Fullstack Developer
           </h5>
           <CTA />
         </motion.div>

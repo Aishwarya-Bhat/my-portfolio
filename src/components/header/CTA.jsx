@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import CV from "../../assets/Aishwarya_CV.pdf";
+import CV from "../../assets/AishwaryaBhat.pdf";
 import { themeContext } from "../../Context";
 
 const CTA = () => {

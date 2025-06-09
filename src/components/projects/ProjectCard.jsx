@@ -48,6 +48,7 @@ const ProjectCard = ({ projectTypeNum, projectTypeHeading, workList }) => {
 		{ id: 0, hover: false },
 		{ id: 1, hover: false },
 		{ id: 2, hover: false },
+		{ id: 3, hover: false },
 	];
 	const [isHovering, setIsHovering] = useState(initialHoverState);
 	const theme = useContext(themeContext);

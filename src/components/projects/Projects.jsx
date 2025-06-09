@@ -1,18 +1,33 @@
 import React, { useContext, useState } from "react";
 import { themeContext } from "../../Context";
 import ProjectCard from "./ProjectCard";
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 import "./projects.css";
 
 
 const Projects = () => {
   const projectDetails = [
     {
+      projectTypeHeading: "Full Stack Web Applications",
+      workList: [
+        "Personal Finance Tracker:  A full-stack web application developed for streamlined financial management.",
+        "Built using React.js for the frontend, Django for the backend, and MySQL for data storage.",
+        "Enabled users to log and manage income and expenses, with a comprehensive transaction history view.",
+        "Customized Reports were implemented for generating detailed monthly and yearly financial summaries for better budget planning.",
+        "Data Management with CRUD (Create, Read, Update, Delete) operations, allowing users to modify, add, or delete financial records as needed.",
+        "Managed repositories with structured branching strategies and regularly created and reviewed pull/merge requests to ensure clean, maintainable code.",
+        "Cravebytes Recipe Fullstack Web App: CraveBytes is a comprehensive web application designed to transform the way users discover, save, and interact with recipes.",
+        "Built using the MERN stack (MongoDB, Express.js, React.js, and Node.js), this application combines powerful search capabilities with personalized user features to create an engaging culinary experience.",
+        "The application addresses common challenges faced by cooking enthusiasts: finding recipes based on specific dietary needs, organizing favorite recipes, and maintaining a searchable history of culinary explorations.",
+        "By integrating with the Spoonacular API, Cravebytes provides users access to a vast database of recipes while offering a personalized experience through user accounts.",
+      ]
+    },
+    {
       projectTypeHeading: "React Web Applications",
       workList: [
         "Orbis App: Experienced in rendering data as XY Chart, Bubblechart, Stack chart, Pie chart, Donut chart for the visualizations of revolution using library like Am charts.",
         "Proficient with displaying UI input elements such as drop down list with check- box, switch, and radio buttons, parametric to the data on the graph.",
-        "Design and development of “Oxyshare” Application, a not for profit tool to rent oxygen concentrators during the Covid Pandemic. Users request for Concentrators, donors would approve and track devices which also gives effective reuse and maximise the availability.",
+        "Design and development of 'Oxyshare' Application, a not for profit tool to rent oxygen concentrators during the Covid Pandemic. Users request for Concentrators, donors would approve and track devices which also gives effective reuse and maximise the availability.",
         "Incorporated responsive web app design for the app to seamlessly work, irrespective of the size of the screen, orientation and platform.",
         "Scripbox Web App: Implemented react stepper, radio card, news card, blog card, and video card feature components, screen to link all unlinked funds in an account of family memebers.",
         "Created an online Student Feedback System to reduce paper work."
@@ -54,21 +69,21 @@ const Projects = () => {
   const darkMode = theme.state.darkMode;
 
   const variants = {
-
     scaleChange: { scale: 0.5, transition: { duration: 1, type: "spring", } },
     stop: { scale: 1 }
-
   };
 
   const handleClick = (slide) => {
-    setProjectNum(slide);
+    if (slide === projectNum) return;
     setShowMotion(true);
     setTimeout(() => {
+      setProjectNum(slide);
       setShowMotion(false);
-    }, 1000);
-
-
+    }, 300); // shorter duration for snappier transition
   }
+
+
+
   return (
     <section id="services">
       <h5
@@ -78,7 +93,7 @@ const Projects = () => {
             : { color: "var(--color-light-light)" }
         }
       >
-        What I offer
+        My Contributions on
       </h5>
       <h2
         style={
@@ -90,52 +105,50 @@ const Projects = () => {
         Projects
       </h2>
       <div className="container buttons_container">
-        <button
-          // type="submit"
-          className={
-            darkMode
-              ? "buttn btn btn-primary active"
-              : "buttn light__btn light__btn-primary"
-          }
-          onClick={() => handleClick(0)}
-        >
-          React Web Applications
-        </button>
-        <button
-          // type="submit"
-          className={
-            darkMode
-              ? "buttn btn btn-primary"
-              : "buttn light__btn light__btn-primary"
-          }
-          onClick={() => handleClick(1)}
-        >
-          React Native Applications
-        </button>
-        <button
-          // type="submit"
-          className={
-            darkMode
-              ? "buttn btn btn-primary"
-              : "buttn light__btn light__btn-primary"
-          }
-          onClick={() => handleClick(2)}
-        >
-          Embedded Applications
-        </button>
+        {projectDetails.map((project, idx) => (
+          <motion.button
+            key={project.projectTypeHeading}
+            className={
+              darkMode
+                ? `buttn btn btn-primary${projectNum === idx ? " active" : ""}`
+                : "buttn light__btn light__btn-primary"
+            }
+            whileTap={{ scale: 0.92 }}
+            animate={projectNum === idx ? { scale: 1.08 } : { scale: 1 }}
+            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            style={
+              projectNum === idx
+                ? {
+                    boxShadow: darkMode
+                      ? "0 0 0.5rem var(--color-primary)"
+                      : "0 0 0.5rem var(--color-light-primary)",
+                    zIndex: 1,
+                  }
+                : {}
+            }
+            onClick={() => handleClick(idx)}
+          >
+            {project.projectTypeHeading}
+          </motion.button>
+        ))}
       </div>
-      <motion.div
-        variants={variants}
-        animate={showMotion ? 'scaleChange' : 'stop'}
-        className="container projects__container">
-
-        <ProjectCard
-          projectTypeNum={projectNum}
-          projectTypeHeading={projectDetails[projectNum].projectTypeHeading}
-          workList={projectDetails[projectNum].workList}
-        />
-
-      </motion.div>
+      <div className="container projects__container">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={projectNum}
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -40 }}
+            transition={{ duration: 0.35, type: "tween" }}
+          >
+            <ProjectCard
+              projectTypeNum={projectNum}
+              projectTypeHeading={projectDetails[projectNum].projectTypeHeading}
+              workList={projectDetails[projectNum].workList}
+            />
+          </motion.div>
+        </AnimatePresence>
+      </div>
     </section>
   );
 };

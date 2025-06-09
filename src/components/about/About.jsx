@@ -52,7 +52,7 @@ const About = () => {
               <AboutCard
                 icon={FaAward}
                 title="Experience"
-                subject="3+ Years Working"
+                subject="6+ Years Working"
               />
             </motion.div>
 
@@ -80,15 +80,21 @@ const About = () => {
             </motion.div>
           </div>
           <p>
-            Software Engineer with a total experience of 5 Years in Web and
-            Mobile Application development (1 year) and Embedded Software (4
-            Years). Extensive experience in designing UI web applications using
-            frontend technologies like HTML5, CSS3, JavaScript, React JS,
-            React-native, & ES6. Proficient in usage of states and props.
-            Experience in designing various forms, tooltips, menus, tabs,
-            widgets, data and time selector. Experience in Software life cycle
-            phases like Requirement Analysis, Implementation and estimating the
-            timelines for the project.
+          I'm a passionate Software Engineer with 6 years of experience across Web, Mobile, 
+          and Embedded application development. Over the past 3+ years, I’ve focused on building responsive 
+          and intuitive web and mobile apps using modern front-end technologies like React JS, React Native, 
+          JavaScript (ES6), HTML5, and CSS3. My background also includes 3 years of hands-on work in Embedded 
+          Software using languages like C, C++, and Python. <br />
+
+          I enjoy turning complex problems into simple, user-friendly solutions. Whether it’s creating dynamic 
+          UIs, designing custom forms and components, or managing application state effectively with props and 
+          hooks, I strive for clean and maintainable code. <br />
+
+          I’m also experienced in working through the full software development life cycle—from requirement analysis 
+          and implementation to estimation and delivery. I’ve contributed to Agile teams, tracked progress using tools 
+          like Jira, and communicated regularly with stakeholders through demos, updates, and risk assessments. <br />
+
+          <br /> Let’s build something great together.
           </p>
           <a
             href="#contact"

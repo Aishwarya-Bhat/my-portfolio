@@ -159,7 +159,7 @@ const Footer = () => {
             }
             href="#experience"
           >
-            Experience
+            Skills
           </a>
         </li>
         <li>
