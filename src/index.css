@@ -138,7 +138,7 @@ a:hover {
   width: max-content;
   display: inline-block;
   padding: 0.75rem 1.2rem;
-  border-radius: 0.4rem;
+  border-radius: 2rem;
   cursor: pointer;
   transition: var(--transition);
 }

@@ -17,6 +17,7 @@
   text-align: center;
   border: 1px solid transparent;
   transition: var(--transition);
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0); /* Initial state with no shadow */
 }
 .dark__contact__option {
   background: var(--color-bg-variant);
@@ -29,11 +30,15 @@
 .dark__contact__option:hover {
   background: transparent;
   border-color: var(--color-primary-variant);
+  box-shadow: 0 0 20px var(--color-primary-variant);
+  transform: translateY(-5px);
 }
 
 .light__contact__option:hover {
   background: transparent;
   border-color: var(--color-light-primary-variant);
+  box-shadow: 0 0 20px var(--color-light-primary-variant);
+  transform: translateY(-5px);
 }
 
 .contact__option-icon {

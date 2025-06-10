@@ -120,6 +120,7 @@ const Experience = () => {
     { id: 1, hover: false },
     { id: 2, hover: false },
     { id: 3, hover: false },
+    { id: 4, hover: false },
   ];
   const [isHovering, setIsHovering] = useState(initialHoverState);
 
@@ -243,11 +244,11 @@ const Experience = () => {
             rightTitle="Backend Tools"
             rightSkills={backend}
             darkMode={darkMode}
-            hoverState={false}
-            onMouseEnter={() => {}}
-            onMouseLeave={() => {}}
+            hoverState={isHovering[4].hover}
+            onMouseEnter={() => handleMouseEnter(4)}
+            onMouseLeave={() => handleMouseLeave(4)}
             containerClass="experience__twosets__skills"
-            style={getSectionStyle(2)}
+            style={getSectionStyle(4)}
           />
         </div>
       </div>

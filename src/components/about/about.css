@@ -2,6 +2,7 @@
   display: grid;
   grid-template-columns: 35% 50%;
   gap: 15%;
+  align-items: center;
 }
 
 .about__me {
@@ -11,6 +12,7 @@
   border-radius: 2rem;
   display: grid;
   place-items: center;
+  align-self: center;
 }
 .dark__about__me {
   background: linear-gradient(
@@ -53,6 +55,7 @@
   padding: 2rem;
   text-align: center;
   transition: var(--transition);
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0); /* Initial state with no shadow */
 }
 .dark__about__card {
   background: var(--color-bg-variant);
@@ -66,12 +69,16 @@
   background: transparent;
   border-color: var(--color-primary-variant);
   cursor: default;
+  box-shadow: 0 0 20px var(--color-primary-variant);
+  transform: translateY(-5px);
 }
 
 .light__about__card:hover {
   background: transparent;
   border-color: var(--color-light-primary-variant);
   cursor: default;
+  box-shadow: 0 0 20px var(--color-light-primary-variant);
+  transform: translateY(-5px);
 }
 
 .about__card h5 {
@@ -103,6 +110,7 @@
   .about__container {
     grid-template-columns: 1fr;
     gap: 0;
+    align-items: center;
   }
 
   .about__me {

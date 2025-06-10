@@ -21,12 +21,15 @@
   transition: var(--transition);
   height: auto;
   margin: 0 10%;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0); /* Initial state with no shadow */
 }
 
 .projects:hover {
   background: transparent;
   border-color: var(--color-primary-variant);
   cursor: default;
+  box-shadow: 0 0 20px var(--color-primary-variant);
+  transform: translateY(-5px);
 }
 
 .projects__heading {
